@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import button from 'react-bootstrap/button';
 import Node from './Node/Node';
 import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
 import {AStar} from '../algorithms/AStar';
@@ -397,6 +398,48 @@ export default class PathfindingVisualizer extends Component {
     const {grid, mouseIsPressed} = this.state;
     return (
       <div>
+          <div class="text-center">
+          <div class="btn-group">
+          <button
+            type="button"
+            className="btn-default btn-primary"
+            onClick={() => this.visualize('Dijkstra')}>
+            Dijkstra's
+          </button>
+          <button
+            type="button"
+            className="btn-default btn-primary"
+            onClick={() => this.visualize('AStar')}>
+            A*
+          </button>
+          <button
+            type="button"
+            className="btn-default btn-primary"
+            onClick={() => this.visualize('BFS')}>
+            Bread First Search
+          </button>
+          <button
+            type="button"
+            className="btn-default btn-primary"
+            onClick={() => this.visualize('DFS')}>
+            Depth First Search
+          </button>
+          </div>
+          </div>
+          <div class="text-center">
+          <button
+            type="button"
+            className="btn-default btn-danger"
+            onClick={() => this.clearGrid()}>
+            Clear Grid
+          </button>
+          <button
+            type="button"
+            className="btn-default btn-warning"
+            onClick={() => this.clearWalls()}>
+            Clear Walls
+          </button>
+          </div>
                 <table
           className="grid-container"
           onMouseLeave={() => this.handleMouseLeave()}>
@@ -429,57 +472,23 @@ export default class PathfindingVisualizer extends Component {
             })}
           </tbody>
         </table>
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={() => this.clearGrid()}>
-          Clear Grid
-        </button>
-        <button
-          type="button"
-          className="btn btn-warning"
-          onClick={() => this.clearWalls()}>
-          Clear Walls
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => this.visualize('Dijkstra')}>
-          Dijkstra's
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => this.visualize('AStar')}>
-          A*
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => this.visualize('BFS')}>
-          Bread First Search
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => this.visualize('DFS')}>
-          Depth First Search
-        </button>
+
         {this.state.isDesktopView ? (
-          <button
-            type="button"
-            className="btn btn-light"
-            onClick={() => this.toggleView()}>
-            Mobile View
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="btn btn-dark"
-            onClick={() => this.toggleView()}>
-            Desktop View
-          </button>
-        )}
+            <button
+              type="button"
+              className="btn-default btn-light"
+              onClick={() => this.toggleView()}>
+              Mobile View
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn-default btn-dark"
+              onClick={() => this.toggleView()}>
+              Desktop View
+            </button>
+          )}
+
       </div>
     );
   }
